@@ -27,9 +27,9 @@
 
 If you encounter any issues, logs can help diagnose the problem. Here’s where to find them:
 
-- **Primary Logs**: The main debug logs are located at:
+- **Primary Logs**: The main `debug.log` is located at:
   ```
-  %appdata%\Voices of the Court\votc_data\logs\debug.log
+  %appdata%\Voices of the Court\votc_data\logs\
   ```
   
 - **Additional Logs**: You may also find `debug.log` and `error.log` in the Crusader Kings III directory:
