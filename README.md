@@ -22,3 +22,23 @@
    ```
    %appdata%\Voices of the Court\votc_data\scripts\
    ```
+
+## Issues and Logs
+
+If you encounter any issues, logs can help diagnose the problem. Here’s where to find them:
+
+- **Primary Logs**: The main debug logs are located at:
+  ```
+  %appdata%\Voices of the Court\votc_data\logs\debug.log
+  ```
+  
+- **Additional Logs**: You may also find `debug.log` and `error.log` in the Crusader Kings III directory:
+  ```
+  C:\Users\%username%\Documents\Paradox Interactive\Crusader Kings III\logs
+  ```
+
+### Quick Access
+To quickly open these directories:
+1. Press `Win + R`.
+2. Paste the directory path.
+3. Press `Enter`.
