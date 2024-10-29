@@ -10,3 +10,15 @@
 3. Paste the copied command into the dialog box.
 
 4. Press `Enter` to execute the installation.
+
+
+## Manual Installation Guide
+
+1. **Download** the ZIP file of this repository.
+
+2. **Extract** the contents of the ZIP file.
+
+3. **Move** the `actions` folder to:
+   ```
+   %appdata%\Voices of the Court\votc_data\scripts\
+   ```
