@@ -1,7 +1,7 @@
 # GitHub repository details
 $repoOwner = "MrAndroPC"
 $repoName = "votc-actions-repo"
-$folderPath = "actions"
+$folderPath = "actions/custom"
 $destinationPath = "$env:APPDATA\Voices of the Court\votc_data\scripts\actions\custom"
 
 # Ensure the destination directory exists
