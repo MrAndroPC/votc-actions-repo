@@ -1,3 +1,6 @@
+## Recommendations
+1. Disable these standart actions: **aiGetsWounded** (replaced by aiInjured) and **intercourse** (no more recurring intercourses in one convo with intercourseA)
+
 ## Quick Installation Guide
 
 1. Copy the following PowerShell command:
