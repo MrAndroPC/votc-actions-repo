@@ -28,7 +28,7 @@ module.exports = {
     run: (gameData, runGameEffect, args) => {
         let ai = gameData.getAi();
         args[1] = ai.gold
-        if (Number(args[0]) < Number(args[1])) {
+        if (Number(args[0]) <= Number(args[1])) {
             runGameEffect(`
                 global_var:talk_first_scope = {
                     add_gold = ${args[0]};
@@ -41,7 +41,7 @@ module.exports = {
         }
     },
     chatMessage: (args) =>{
-        if (Number(args[0]) < Number(args[1])) {
+        if (Number(args[0]) <= Number(args[1])) {
             return `{{aiName}} paid ${args[0]} gold to you`
         }
         else {

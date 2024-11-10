@@ -1,4 +1,4 @@
-//Made by: joemann
+//Made by: joemann, adjusted by MrAndroPC
 
 /**@typedef {import('../../gamedata_typedefs.js').GameData} GameData */
 module.exports = {
@@ -16,11 +16,8 @@ module.exports = {
      * @param {GameData} gameData 
      */
     check: (gameData) => {
-		return !gameData.getAi().hasTrait("AlreadySoulmate")
         let ai = gameData.getAi();
-        return ( 
-                ai.opinionOfPlayer > 40
-                )
+		return !(ai.relationsToPlayer.includes("Soulmate")) && ai.opinionOfPlayer > 40 && ai.getOpinionModifierValue("From conversation") > 35
 				
     },
 
@@ -31,10 +28,11 @@ module.exports = {
      */
     run: (gameData, runGameEffect, args) => {
         console.log(args[0])
+        let ai = gameData.getAi();
         runGameEffect(`global_var:talk_second_scope = {
             set_relation_soulmate = { reason = ${args[0]} target = global_var:talk_first_scope }
         }`)
-		gameData.getAi().addTrait({
+		ai.addTrait({
         category: "flag",
         name: "AlreadySoulmate",
         desc: `${gameData.getAi().shortName} had sex recently`
@@ -45,17 +43,4 @@ module.exports = {
         return `{{aiName}} has become your soulmate.`
     },
     chatMessageClass: "positive-action-message"
-}
-//help functions 
-function getConversationOpinionValue(opinionBreakdown){
-    let results = opinionBreakdown.filter( (opinionModifier) =>{
-        return opinionModifier.reason == "From conversations";
-    })
-
-    let conversationOpinion = 0;
-    if(results.length>0){
-        conversationOpinion = results[0].value;
-    }
-
-    return conversationOpinion;
 }

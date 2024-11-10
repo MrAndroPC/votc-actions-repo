@@ -1,4 +1,5 @@
 //Made by: MrAndroPC
+//Currently WIP, doesn't work as it should be yet
 
 /**@typedef {import('../../gamedata_typedefs.js').GameData} GameData */
 module.exports = {
