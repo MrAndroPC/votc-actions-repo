@@ -54,7 +54,7 @@ module.exports = {
         let aiScore = Number(ai.traits.find(trait => trait.name === "VassalizationDebateScore").desc) + Number(args[0]);
         console.log(`PVAI: new_score: ${aiScore}`)
 
-        if (aiScore >= 20) {
+        if (aiScore >= 30) {
             runGameEffect(`
                 create_title_and_vassal_change = {
                     type = swear_fealty
@@ -83,7 +83,7 @@ module.exports = {
     chatMessage: (args) => {
         let aiScore = args[1]
         console.log(`PVAIchat: score: ${aiScore}`)
-        if (aiScore >= 20) {
+        if (aiScore >= 30) {
             console.log(`PVAIchat: if`)
             return `{{aiName}} agreed to be vassalized by {{playerName}}.`;
         } else {
