@@ -1,5 +1,8 @@
-## Recommendations
+# **Attention!!!**
 1. Disable these standart actions: **aiGetsWounded** (replaced by aiInjured) and **intercourse** (no more recurring intercourses in one convo with intercourseA)
+2. Choose only one **allianceDiplomatic** action. New action has a new formula* of action avaliability, based on exact values of religion, cultural, personal and conversation opinions and personal diplomacy.
+
+\* Formula: `score = ((cultural_op+religion_op+personal_diplo+100) / 100) * (75 + (opinion / 2) + (convo_op * 2))`
 
 ## Quick Installation Guide
 

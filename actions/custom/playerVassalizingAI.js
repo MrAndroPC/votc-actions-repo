@@ -1,5 +1,4 @@
 //Made by: MrAndroPC
-//Currently WIP, doesn't work as it should be yet
 
 /**@typedef {import('../../gamedata_typedefs.js').GameData} GameData */
 module.exports = {
@@ -10,13 +9,8 @@ module.exports = {
             type: "number",
             desc: "Required argument, range (-10, 10). Specifies {{aiName}} vassalization acceptance by {{playerName}}. Positive values mean that {{aiName}} tends to accept vassalization by {{playerName}}. Negative values mean that {{aiName}} tends to reject vassalization by {{playerName}}."
         }
-        // {
-        //     name: "changePlayerPoliticalScore",
-        //     type: "number",
-        //     desc: "Required argument, range (-10, 20). Specifies how strong {{playerName}}'s proposal score to vassalize {{aiName}} will be added in this after last message"
-        // }
     ],
-    description: `Execute when {{aiName}} and {{playerName}} are debating about {{playerName}}'s vassalization of {{aiName}}.`,
+    description: `Execute when {{aiName}} and {{playerName}} are talking about {{playerName}}'s vassalization of {{aiName}} or it's terms.`,
     
     /**
      * @param {GameData} gameData 
@@ -60,14 +54,24 @@ module.exports = {
         let aiScore = Number(ai.traits.find(trait => trait.name === "VassalizationDebateScore").desc) + Number(args[0]);
         console.log(`PVAI: new_score: ${aiScore}`)
 
-        if (aiScore >= 30) {
+        if (aiScore >= 20) {
             runGameEffect(`
+                create_title_and_vassal_change = {
+                    type = swear_fealty
+                    save_scope_as = change
+                }
                 global_var:talk_second_scope = {
                     change_liege = {
-                        liege = global_var:talk_first_scope
+                        liege = root
                         change = scope:change
                     }
+                    add_opinion = {
+                        modifier = became_vassal
+                        target = root
+                        opinion = 10
+                    }
                 }
+                resolve_title_and_vassal_change = scope:change
             `); 
         } else {
             ai.traits.find(trait => trait.name === "VassalizationDebateScore").desc = aiScore;
@@ -79,7 +83,7 @@ module.exports = {
     chatMessage: (args) => {
         let aiScore = args[1]
         console.log(`PVAIchat: score: ${aiScore}`)
-        if (aiScore > 30) {
+        if (aiScore >= 20) {
             console.log(`PVAIchat: if`)
             return `{{aiName}} agreed to be vassalized by {{playerName}}.`;
         } else {

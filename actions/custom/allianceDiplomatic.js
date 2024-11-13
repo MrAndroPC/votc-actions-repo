@@ -52,16 +52,3 @@ module.exports = {
     },
     chatMessageClass: "positive-action-message"
 }
-
-function getConversationOpinionValue(opinionBreakdown) {
-    let results = opinionBreakdown.filter((opinionModifier) => {
-        return opinionModifier.reason == "From conversations";
-    });
-
-    let conversationOpinion = 0;
-    if (results.length > 0) {
-        conversationOpinion = results[0].value;
-    }
-
-    return conversationOpinion;
-}
